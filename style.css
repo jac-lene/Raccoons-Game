@@ -1,0 +1,302 @@
+body {
+    background-color: rgb(250, 250, 241);
+}
+
+h1 {
+    color: rgb(85, 31, 31);
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.reset {
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.final {
+    background-color: white;
+    font-size: 15px;
+}
+
+.redo {
+    background-color: white;
+    font-size: 15px;
+}
+
+.infoBox {
+    /* border: 1px solid black; */
+    height: 100px;
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
+}
+
+.yardBoundBox {
+    /* border: 1px solid black; */
+    height: 240px;
+    width: 360px;
+    position: absolute;
+    z-index: 2;
+    margin-right: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+    /* pointer-events: none; */
+}
+
+.yardBoundDiv {
+    /* background-color: green; */
+    /* border: .5px dashed black; */
+    height: 20px;
+    width: 20px;
+    margin: 1px;
+}
+
+.grillBoundBox {
+    /* border: 1px solid black; */
+    height: 130px;
+    width: 380px;
+    position: absolute;
+    z-index: 2;
+    margin-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+    /* pointer-events: none */
+}
+
+.grillBoundDiv {
+    /* background-color: rgb(114, 113, 113); */
+    /* border: .5px dashed black; */
+    height: 20px;
+    width: 20px;
+    margin: 1px;
+    
+}
+
+.yardContainer, .grillContainer {
+    /* border: 1px solid black; */
+    height: 300px;
+    width: 400px;
+    /* margin-bottom: 30px; */
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+}
+
+.boardContainer {
+    /* display: grid; */
+    display: flex;
+    justify-content: center;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.yardDiv {
+    background-color: rgb(66, 212, 66);
+    border: .5px dashed greenyellow;
+    height: 20px;
+    width: 20px;
+    margin: 0px;
+}
+
+.grillDiv {
+    background-color: rgb(164, 161, 161);
+    border: .5px dashed rgb(242, 242, 242);
+    height: 20px;
+    width: 20px;
+    margin: 0px;
+}
+
+.raccoon1, .raccoon2, .raccoon3 {
+    width:60px;
+    height: 80px;
+    padding-left: 2px;
+    padding-top: 3px;
+}
+
+.r1 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 100%;
+}
+.r2 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    left:40px;
+    bottom: 20px;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 20%;
+}
+.r3 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 20px;
+}
+.r4 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 40px;
+    left: 20px;
+}
+.r5 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 60px;
+    left: 40px;
+}
+.r6 {
+        background-color: black;
+        height: 20px;
+        width: 20px;
+        position: relative;
+        bottom: 60px;
+        border-bottom-left-radius: 40%;
+        
+}
+.r7 {
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 80px;
+    left: 20px;    
+}
+.r8 {
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 100px;
+    left: 40px;
+    border-bottom-right-radius: 40%;
+}
+
+.r9 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 100px;
+    left: 20px;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+}
+
+.hotdogs {
+    height: 200px;
+    display: flex;
+    gap: 40px;
+}
+
+.hotdog1, .hotdog2, .hotdog3 {
+    height: 200x;
+    width: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+    position: relative;
+    right: 2px;
+    bottom: 0px;
+    z-index: 999;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, .h7, .h8, .h9, .h10, .h11, .h12, .h13, .h14, .h15, .h16, .h17, .h18 {
+    background-color: rgb(145, 37, 37);
+    height: 20px;
+    width: 20px;
+    padding-bottom: 2px;
+}
+
+ .h1 {
+    border-top-left-radius: 100%;
+}
+.h2 {
+    border-top-right-radius: 100%;
+}
+
+.h17 {
+    border-bottom-left-radius: 100%;
+}
+.h18 {
+    border-bottom-right-radius: 100%;
+} 
+
+@media (max-width: 900px) {
+    
+    h1 {
+        margin-bottom: 50px;
+    }
+
+    .infoBox {
+        margin-bottom: 50px;
+    }
+
+    .boardContainer {
+        display: grid;
+        /* display: flex; */
+        justify-content: center;
+    }
+
+    .yardContainer, .grillContainer {
+        /* border: 1px solid black; */
+        height: 300px;
+        width: 400px;
+        margin-bottom: 20px;
+        /* margin: 10px; */
+    }
+@media (max-width: 600px) {
+
+    h1 {
+        margin-bottom: 50px;
+        font-size: 30px;
+    }
+
+    .infoBox {
+        width: 400px;
+    }
+
+    .hotdogs {
+        display: flex;
+        gap: 20px;
+    } 
+
+    .yardContainer, .grillContainer {
+        /* border: 1px solid black; */
+        height: 300px;
+        width: 400px;
+        margin-bottom: 0px;
+    }
+}
+    
+    
+}
