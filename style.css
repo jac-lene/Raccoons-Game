@@ -66,7 +66,7 @@ h1 {
     width: 380px;
     position: absolute;
     z-index: 2;
-    margin-right: 20px;
+    margin-right: 22px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -89,7 +89,7 @@ h1 {
     height: 300px;
     width: 400px;
     /* margin-bottom: 30px; */
-    margin: 20px;
+    /* margin: 20px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -124,11 +124,19 @@ h1 {
     margin: 0px;
 }
 
-.raccoon1, .raccoon2, .raccoon3 {
-    width:60px;
+.raccoons {
+    margin-bottom: 10px;
     height: 80px;
+    display: flex;
+    gap: 80px;
+}
+
+.raccoon1, .raccoon2, .raccoon3 {
+    width: 0px;
+    height: 0px;
     padding-left: 2px;
     padding-top: 3px;
+    z-index: -1000;
 }
 
 .r1 {
@@ -138,6 +146,7 @@ h1 {
     position: relative;
     border-top-left-radius: 20%;
     border-top-right-radius: 100%;
+    z-index: 999;
 }
 .r2 {
     background-color: grey;
@@ -148,6 +157,7 @@ h1 {
     bottom: 20px;
     border-top-left-radius: 100%;
     border-top-right-radius: 20%;
+    z-index: 999;
 }
 .r3 {
     background-color: grey;
@@ -155,6 +165,7 @@ h1 {
     width: 20px;
     position: relative;
     bottom: 20px;
+    z-index: 999;
 }
 .r4 {
     background-color: grey;
@@ -163,6 +174,7 @@ h1 {
     position: relative;
     bottom: 40px;
     left: 20px;
+    z-index: 999;
 }
 .r5 {
     background-color: grey;
@@ -171,6 +183,7 @@ h1 {
     position: relative;
     bottom: 60px;
     left: 40px;
+    z-index: 999;
 }
 .r6 {
         background-color: black;
@@ -179,7 +192,7 @@ h1 {
         position: relative;
         bottom: 60px;
         border-bottom-left-radius: 40%;
-        
+        z-index: 999;
 }
 .r7 {
     background-color: black;
@@ -188,6 +201,7 @@ h1 {
     position: relative;
     bottom: 80px;
     left: 20px;    
+    z-index: 999;
 }
 .r8 {
     background-color: black;
@@ -197,6 +211,7 @@ h1 {
     bottom: 100px;
     left: 40px;
     border-bottom-right-radius: 40%;
+    z-index: 999;
 }
 
 .r9 {
@@ -208,6 +223,7 @@ h1 {
     left: 20px;
     border-bottom-left-radius: 20%;
     border-bottom-right-radius: 20%;
+    z-index: 999;
 }
 
 .hotdogs {
@@ -254,11 +270,11 @@ h1 {
 @media (max-width: 900px) {
     
     h1 {
-        margin-bottom: 50px;
+        margin-bottom: 80px;
     }
 
     .infoBox {
-        margin-bottom: 50px;
+        margin-bottom: 80px;
     }
 
     .boardContainer {
@@ -277,7 +293,7 @@ h1 {
 @media (max-width: 600px) {
 
     h1 {
-        margin-bottom: 50px;
+        margin-bottom: 70px;
         font-size: 30px;
     }
 
@@ -289,6 +305,10 @@ h1 {
         display: flex;
         gap: 20px;
     } 
+
+    .raccoons {
+        gap: 70px;
+    }
 
     .yardContainer, .grillContainer {
         /* border: 1px solid black; */

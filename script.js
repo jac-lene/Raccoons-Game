@@ -55,6 +55,7 @@ let hide3 = false;
 let guessed = false;
 let raccHitArr = [];
 let hdHitArr = [];
+let game = 1;
 
 //Divs for Boards
 for (let i = 0; i <= 251; i++) {
@@ -111,7 +112,7 @@ function hasRac(elem) {
 //HotDog Placement
 document.querySelector(".hotdog1").addEventListener('click',(event) => {
     document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
-        if ((hasDog(event.target) == false) && (placed1 == false)) {
+        if ((hasDog(event.target) == false) && (placed1 == false) && !(event.target.classList.contains("grillBoundBox"))) {
         placed1 = true;
         countdown++
         let hd1 = document.querySelector(".hotdog1");
@@ -125,7 +126,7 @@ document.querySelector(".hotdog1").addEventListener('click',(event) => {
 
 document.querySelector(".hotdog2").addEventListener('click',(event) => {
     document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
-        if ((hasDog(event.target) == false) && (placed2 == false)) {
+        if ((hasDog(event.target) == false) && (placed2 == false) && !(event.target.classList.contains("grillBoundBox"))) {
         placed2 = true;
         countdown++
         let hd2 = document.querySelector(".hotdog2");
@@ -139,7 +140,7 @@ document.querySelector(".hotdog2").addEventListener('click',(event) => {
 
 document.querySelector(".hotdog3").addEventListener('click',(event) => {
     document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
-        if ((hasDog(event.target) == false) && (placed3 == false)) {
+        if ((hasDog(event.target) == false) && (placed3 == false) && !(event.target.classList.contains("grillBoundBox"))) {
         placed3 = true;
         countdown++
         let hd3 = document.querySelector(".hotdog3");
@@ -170,7 +171,7 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0;}
+    rac.children[i].style.opacity = 0.5;}
 }
 
 function raccoon2Hide() {
@@ -186,7 +187,7 @@ rac.style.display = "block"
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0;}
+    rac.children[i].style.opacity = 0.5;}
 }
 
 function raccoon3Hide() {
@@ -202,7 +203,7 @@ rac.style.display = "block"
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0;}
+    rac.children[i].style.opacity = 0.5;}
 }
 
 //test button
@@ -221,10 +222,11 @@ for (let i = 0; i < rac.children.length; i++) {
 
 //Raccoon Guess
     //test button
-    document.querySelector(".test2").addEventListener('click', winConditions);
+    // document.querySelector(".test2").addEventListener('click', winConditions);
 
     //function
 function raccoonGuess() {
+    if (game !== 0) {
     guessed = false;
     let randomPlace = Math.floor(Math.random() * 252);
    
@@ -252,46 +254,66 @@ function raccoonGuess() {
         foundElem[1].classList.add("dogHit");
         hdHitArr.push(foundElem[0]);
         console.log(hdHitArr);
+        setTimeout(winConditions, 800);
         document.querySelector(".infoBox").innerHTML = `You got got!`;
-        setTimeout(lemonThrow, 1500)
+        setTimeout(lemonThrow, 800)
         } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
             raccoonGuess();
         } else {
             foundElem[0].style.backgroundColor = "grey";
             foundElem[0].classList.add("miss");
             document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
-            setTimeout(lemonThrow, 1500)
+            setTimeout(lemonThrow, 800)
         }
-}}
+}}}
 //RACCOON GUESS END!!
 
 //Lemon Throw (User's Turn)
 function lemonThrow() {
+    if (game !== 0) {
     document.querySelector(".infoBox").innerHTML = `Fight off the rodents!`;
     document.querySelector(".yardContainer").addEventListener('click', (event) => {
-    if (guessed == false && !(event.target.classList.contains("miss")) && !(event.target.classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox"))) {
-    let square = event.target;
-    square.style.opacity = 1;
-    square.style.backgroundColor = "lightgreen";
-    square.style.borderRadius = "0%";
-    square.classList.add("miss");
+
+        //if to prevent clicks on random stuff
+ if ((game !== 0) && (guessed == false) && !(event.target.classList.contains("miss")) && !(event.target.    classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox")) && !(event.target.classList.contains("raccoon1")) && !(event.target.classList.contains("raccoon2")) && !(event.target.classList.contains("raccoon3"))) {
+
+        //local variables
     guessed = true;
-        if (hasRac(square) == false) {
-            square.style.backgroundColor = "greenyellow";
+
+    if (event.target.classList.contains("raccoon")) {
+              //find board element
+    var offsets = event.target.getBoundingClientRect();
+    var bottom = offsets.bottom;
+    var left = offsets.left;
+    var bottomCenter = bottom - 10;
+    var leftCenter = left + 14;
+    }
+    event.target.style.zIndex = -1;
+    let boardDiv = document.elementFromPoint(leftCenter, bottomCenter)
+    console.log(`event target: ${event.target.classList}, element from point: ${boardDiv.classList}`)
+
+      //find top element at that location
+    if (boardDiv.classList === null) {
+        lemonThrow();} 
+    else { 
+        //if miss, else hit
+        if (!event.target.classList.contains("raccoon")) {
+            event.target.classList.add("miss");
+            event.target.style.backgroundColor = "greenyellow";
             document.querySelector(".infoBox").innerHTML = `No dice. I think I hear something shuffling around the grill...`;
-            setTimeout(raccoonGuess, 1500)
+            setTimeout(raccoonGuess, 1000)
         } else {
-            square.style.backgroundColor = "red";
-            square.style.borderRadius = "0%";
-            square.classList.add("raccHit");
-            raccHitArr.push(square);
-            console.log(raccHitArr)
+            boardDiv.style.backgroundColor = "darkred";
+            boardDiv.classList.add("raccHit");
+            raccHitArr.push(boardDiv);
+            console.log(raccHitArr.length)
+            setTimeout(winConditions, 800);
             document.querySelector(".infoBox").innerHTML = `Got 'em! Now they're gonna be mad...`;
-            setTimeout(raccoonGuess, 1500)
-        }
-    }     
-}) 
-}
+            setTimeout(raccoonGuess, 1000)
+            }
+        }}
+    }) 
+}}
 //LEMON THROW END!!
 
 //Click Test for Classes
@@ -318,11 +340,11 @@ function resizeInfo() {
 
 // start alert
 function startAlert() {
-    if (countdown === 3) {
+    if ((countdown === 3) && (game !== 0)) {
         document.querySelector(".infoBox").innerHTML = `those raccoons are hiding out here somewhere..... <br><br>toss a lemon into the backyard and see if you can hit one`;
         gameStarted = true;
         resizeInfo();
-        setTimeout(lemonThrow, 1500)
+        setTimeout(lemonThrow, 1000)
     }
 }
 
@@ -335,12 +357,16 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 
 //Win Conditions
 function winConditions() {
-    console.log(raccHitArr, hdHitArr)
-if (raccHitArr.length === 1) {
-    document.querySelector(".infoBox").innerHTML = `HOTDOG WINS! You really are the grill master.`
-} else if (hdHitArr.length === 1) {
-    document.querySelector(".infoBox").innerHTML = `RACCOON WINS! Those grubby paws are good for something.`
+    console.log(raccHitArr.length, hdHitArr.length)
+if (raccHitArr.length >= 9) {
+    game = 0;
+    alert(`HOTDOG WINS! You really are the grill master.`)
+    document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
+} else if (hdHitArr.length >= 9) {
+    game = 0;
+    alert(`RACCOON WINS! Those grubby paws are good for something.`)
+    document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
 }
 }
-winConditions();
+
 
