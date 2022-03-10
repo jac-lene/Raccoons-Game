@@ -101,6 +101,7 @@ h1 {
     /* display: grid; */
     display: flex;
     justify-content: center;
+    gap: 30px;
 }
 
 .buttonContainer {
@@ -125,105 +126,64 @@ h1 {
 }
 
 .raccoons {
-    margin-bottom: 10px;
-    height: 80px;
+    height: 88px;
     display: flex;
-    gap: 80px;
+    gap: 30px;
 }
 
 .raccoon1, .raccoon2, .raccoon3 {
-    width: 0px;
-    height: 0px;
-    padding-left: 2px;
-    padding-top: 3px;
-    z-index: -1000;
+    width: 68px;
+    height: 88px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+    position: relative;
+    right: 2px;
+    bottom: 1px;
+}
+
+.r1, .r2, .r3, .r4, .r5, .r6, .r7, .r8, .r9, .r10, .r11, .r12 {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+    padding: 1px;
 }
 
 .r1 {
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    border-top-left-radius: 20%;
     border-top-right-radius: 100%;
-    z-index: 999;
+    border-top-left-radius: 20%;
 }
+
 .r2 {
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    left:40px;
-    bottom: 20px;
+    opacity: 0 !important;
+}
+
+.r3 {
     border-top-left-radius: 100%;
     border-top-right-radius: 20%;
-    z-index: 999;
 }
-.r3 {
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 20px;
-    z-index: 999;
+
+.r7, .r8, .r9 {
+    background-color: black;
 }
-.r4 {
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 40px;
-    left: 20px;
-    z-index: 999;
-}
-.r5 {
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 60px;
-    left: 40px;
-    z-index: 999;
-}
-.r6 {
-        background-color: black;
-        height: 20px;
-        width: 20px;
-        position: relative;
-        bottom: 60px;
-        border-bottom-left-radius: 40%;
-        z-index: 999;
-}
+
 .r7 {
-    background-color: black;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 80px;
-    left: 20px;    
-    z-index: 999;
-}
-.r8 {
-    background-color: black;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 100px;
-    left: 40px;
-    border-bottom-right-radius: 40%;
-    z-index: 999;
+    border-bottom-left-radius: 40%;
 }
 
 .r9 {
-    background-color: grey;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 100px;
-    left: 20px;
+    border-bottom-right-radius: 40%;
+}
+
+.r10, .r12 {
+    opacity: 0 !important;
+}
+
+.r11 {
     border-bottom-left-radius: 20%;
     border-bottom-right-radius: 20%;
-    z-index: 999;
 }
 
 .hotdogs {
@@ -241,7 +201,7 @@ h1 {
     align-content: flex-start;
     flex: none;
     position: relative;
-    right: 2px;
+    right: 1px;
     bottom: 0px;
     z-index: 999;
 }
@@ -278,9 +238,8 @@ h1 {
     }
 
     .boardContainer {
-        display: grid;
-        /* display: flex; */
         justify-content: center;
+        gap: 10px;
     }
 
     .yardContainer, .grillContainer {
@@ -290,31 +249,57 @@ h1 {
         margin-bottom: 20px;
         /* margin: 10px; */
     }
-@media (max-width: 600px) {
+@media (max-width: 830px) {
 
     h1 {
-        margin-bottom: 70px;
+        margin-bottom: 60px;
         font-size: 30px;
     }
 
     .infoBox {
         width: 400px;
+        gap: 30px;
     }
 
     .hotdogs {
         display: flex;
-        gap: 20px;
+        gap: 30px;
     } 
 
     .raccoons {
-        gap: 70px;
+        gap: 20px;
     }
 
-    .yardContainer, .grillContainer {
-        /* border: 1px solid black; */
-        height: 300px;
-        width: 400px;
-        margin-bottom: 0px;
+    .boardContainer {
+        display: grid;
+        gap: 10px;
+    }
+   
+    @media (max-width: 600px) {
+
+        h1 {
+            margin-bottom: 70px;
+            font-size: 30px;
+        }
+    
+        .infoBox {
+            width: 400px;
+            gap: 20px;
+        }
+    
+        .hotdogs {
+            display: flex;
+            gap: 20px;
+        } 
+    
+        .raccoons {
+            gap: 10px;
+        }
+    
+        .boardContainer {
+            display: grid;
+            gap: 10px;
+        }
     }
 }
     
