@@ -157,7 +157,8 @@ h1 {
 }
 
 .r2 {
-    opacity: 0 !important;
+    /* pointer-events: none; */
+    opacity: 0;
 }
 
 .r3 {
@@ -178,7 +179,8 @@ h1 {
 }
 
 .r10, .r12 {
-    opacity: 0 !important;
+    opacity: 0;
+    /* pointer-events: none; */
 }
 
 .r11 {

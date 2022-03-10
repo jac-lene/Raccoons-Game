@@ -269,7 +269,7 @@ function lemonThrow() {
     document.querySelector(".yardContainer").addEventListener('click', (event) => {
 
         //if to prevent clicks on random stuff
- if ((game !== 0) && (guessed === false) && !(event.target.classList.contains("miss")) && !(event.target.classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox")) && !(event.target.classList.contains("raccoon1")) && !(event.target.classList.contains("raccoon2")) && !(event.target.classList.contains("raccoon3")) && !(event.target.classList.contains("raccoons"))) {
+ if ((game !== 0) && (guessed === false) && !(event.target.classList.contains("miss")) && !(event.target.classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox")) && !(event.target.classList.contains("raccoon1")) && !(event.target.classList.contains("raccoon2")) && !(event.target.classList.contains("raccoon3"))) {
 
         //local variables
     guessed = true;
@@ -294,6 +294,7 @@ function lemonThrow() {
         if (!event.target.classList.contains("raccoon")) {
             event.target.classList.add("miss");
             event.target.style.backgroundColor = "greenyellow";
+            event.target.style.opacity = 1;
             document.querySelector(".infoBox").innerHTML = `No dice. I think I hear something shuffling around the grill...`;
             setTimeout(raccoonGuess, 1000)
         } else {
