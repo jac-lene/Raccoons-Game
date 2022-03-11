@@ -167,7 +167,7 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0;}
+    rac.children[i].style.opacity = 0.5;}
 }
 
 function raccoon2Hide() {
@@ -291,7 +291,7 @@ function lemonThrow() {
     //     lemonThrow();} 
     // else { 
         //if miss, else hit
-        if (!event.target.classList.contains("raccoon")) {
+        if (!(event.target.classList.contains("raccoon")) || (event.target.classList.contains("r2")) || (event.target.classList.contains("r10")) || (event.target.classList.contains("r12"))) {
             event.target.classList.add("miss");
             event.target.style.backgroundColor = "greenyellow";
             event.target.style.opacity = 1;
@@ -356,11 +356,11 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 //Win Conditions
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length >= 5) {
+if (raccHitArr.length = 5) {
     game = 0;
     alert(`HOTDOG WINS! You really are the grill master.`)
     document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
-} else if (hdHitArr.length >= 5) {
+} else if (hdHitArr.length = 5) {
     game = 0;
     alert(`RACCOON WINS! Those grubby paws are good for something.`)
     document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
