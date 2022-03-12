@@ -1,11 +1,14 @@
 body {
-    background-color: rgb(250, 250, 241);
+    background-color: rgb(238, 238, 115);
 }
 
 h1 {
-    color: rgb(85, 31, 31);
+    color: rgb(0, 0, 0);
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 100px;
+    margin-top: 20px;
+    font-family: 'Barriecito', cursive;
+    font-size: 100px;
 }
 
 .reset {
@@ -110,16 +113,16 @@ h1 {
 }
 
 .yardDiv {
-    background-color: rgb(66, 212, 66);
-    border: .5px dashed greenyellow;
+    background-color: rgb(66, 216, 76);
+    border: .5px dashed rgb(153, 255, 10);
     height: 20px;
     width: 20px;
     margin: 0px;
 }
 
 .grillDiv {
-    background-color: rgb(164, 161, 161);
-    border: .5px dashed rgb(242, 242, 242);
+    background-color: rgb(154, 154, 154);
+    border: .5px dashed rgb(215, 215, 215);
     height: 20px;
     width: 20px;
     margin: 0px;
@@ -132,7 +135,7 @@ h1 {
 }
 
 .raccoon1, .raccoon2, .raccoon3 {
-    width: 68px;
+    width: 70px;
     height: 88px;
     display: flex;
     flex-wrap: wrap;
@@ -204,6 +207,7 @@ h1 {
     right: 1px;
     bottom: 0px;
     z-index: 999;
+    cursor: pointer;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, .h7, .h8, .h9, .h10, .h11, .h12, .h13, .h14, .h15, .h16, .h17, .h18 {

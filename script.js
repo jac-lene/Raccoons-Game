@@ -77,6 +77,7 @@ document.querySelector(".hotdog1").addEventListener('click',(event) => {
         placed1 = true;
         countdown++
         let hd1 = document.querySelector(".hotdog1");
+        hd1.style.cursor = "auto";
         event.target.appendChild(hd1);
         raccoonHide(rac1);
         startAlert();
@@ -90,6 +91,7 @@ document.querySelector(".hotdog2").addEventListener('click',(event) => {
         placed2 = true;
         countdown++
         let hd2 = document.querySelector(".hotdog2");
+        hd2.style.cursor = "auto";
         event.target.appendChild(hd2);
         raccoonHide(rac2);
         startAlert();
@@ -103,6 +105,7 @@ document.querySelector(".hotdog3").addEventListener('click',(event) => {
         placed3 = true;
         countdown++
         let hd3 = document.querySelector(".hotdog3");
+        hd3.style.cursor = "auto";
         event.target.appendChild(hd3);
         raccoonHide(rac3);
         startAlert();
@@ -127,18 +130,24 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
         document.querySelector(position).appendChild(elem);
     }
 
-
 //make transparent 
 for (let i = 0; i < elem.children.length; i++) {
-    elem.children[i].style.opacity = 0.5;}
+    elem.children[i].style.backgroundColor = "rgb(66, 216, 76)";
+    elem.children[i].style.padding = "0px";
+    elem.children[i].style.borderRadius = "0%";
+    elem.children[i].style.margin = "1px";
+}
 
-//
+//line up w grid
+elem.style.right = "3px";
+
+//check overlap
 if ((overlap(rac1, rac2) === true) || (overlap(rac1, rac3) === true)){
     raccoonHide(elem);
 }
 }
 
-//raccoon overlap check
+//overlap function
 function overlap(el1, el2) {
     let div1 = el1.getBoundingClientRect();
     let div2 = el2.getBoundingClientRect();
@@ -150,23 +159,9 @@ return !(
     div1.left + 2 > div2.right - 2) 
 }
 
-// test button
-    document.querySelector(".test2").addEventListener('click', allHide);
 
-function allHide() {
-    raccoon1Hide()
-    raccoon2Hide()
-    raccoon3Hide()
-    console.log(overlap(rac1, rac2), overlap(rac2, rac3), overlap(rac1, rac3))
-}
 //test button
 // document.querySelector(".test1").addEventListener('click', (event) => {
-//     let rac = document.querySelector(".raccoon3")
-//     let racChild = rac.children;
-//     for (let i = 0; i < racChild.length; i++) {
-//         racChild[i].style.opacity = 0;
-//     }
-//     console.log(racChild)
 // })
 // document.querySelector(".test2").addEventListener('click', (event) => {
 //     console.log(getBoundingClientRect()
@@ -312,11 +307,11 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 //Win Conditions
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length === 5) {
+if (raccHitArr.length === 27) {
     game = 0;
     alert(`HOTDOG WINS! You really are the grill master.`)
     document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
-} else if (hdHitArr.length === 5) {
+} else if (hdHitArr.length === 27) {
     game = 0;
     alert(`RACCOON WINS! Those grubby paws are good for something.`)
     document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
