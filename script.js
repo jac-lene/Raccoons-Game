@@ -1,50 +1,24 @@
-
-// game can parse where users lemons land in the yard and registers it as a hit or miss
-// game can parse where raccoons grabs are on the grill and register them as a hit or miss
-// visual cues when a raccoon has been successfully hit or when they have run away.
-// visual cues when a hotdog has been bitten or eaten.
-// basic artwork to get the game concept across
+//Code
+    //DRY
 
 //Board
-    //"splat" image
-    //"chomp" code for hotdog
-    //alert when you're down a whole "piece"
-    //win/lose alert
-    //raccoon guess alert or animation
-    //stretch goal - div element that gets unhidden for a hit/miss notification, click to hide again
-    //Stretch goal - drag and drop
+    //FIND FONT
+    //prevent overlap
+    //add to artwork
+       //add "bitemarks" to the hit div to visualize chomp
 
 //GAMEPLAY
- //Placement
-
  //Guessing
-    //turntaking element
-        //find way to slow down raccoon guessing process?? delay? 
-    //randomly generated raccoon guesses
-        //searches for "hotdog" class on div to determine hit
-        //changes color/disappears to indicate a hit
-        //changes div class to indicate hit
-            //stretch goal: add "bitemarks" to the hit div to visualize chomp
-    //takes user input "click" for yard guess
-        //searches for "raccoon" class on div to determine hit
-        //changes div class to indicate hit
-        //click highlights a div, changes color to indicate a hit
-            //stretch goal: add splat image on "hit"
+    //work  on turn taking process
 
- //Winning Conditions
-    //checks divs for dogHit or raccHit classes, if either reach 9, announce winner
-    //stretch goal - win screen???
-    
 // Stretch Goals   
-    // maybe animation???
-    //drag animation https://www.kirupa.com/html5/drag.htm
-
-
-
+    //div element that gets unhidden for a hit/miss notification, click to hide again
+    //drag and drop or option to rotate https://www.kirupa.com/html5/drag.htm
+    //win screen???
+    //audio
 
 //global variables
 let gameStarted = false;
-let turns = 0;
 let countdown = 0;
 let placed1 = false;
 let placed2 = false;
@@ -81,19 +55,6 @@ for (let i = 0; i <= 101; i++) {
     grillDivs.className = `grillBound${i} sq${i} grillBoundDiv`
     document.querySelector(".grillBoundBox").appendChild(grillDivs)
 }
-
-//turns
-// function turnRules() {
-//     if (gameStarted == true) {
-//         if (turns % 2 === 0) {
-//             turns++
-//              setTimeout(lemonThrow, 1500);
-//         } else {
-//             turns++
-//              setTimeout(raccoonGuess, 1500);
-//     }}
-// }
-// turnRules();
 
 //Class Check Functions
 
@@ -162,12 +123,19 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //place raccoon at random spot
     let rac = document.querySelector(".raccoon1");
-    document.querySelector(position).appendChild(rac);
-    // rac.style.border = "1px solid black"
+    if (!document.querySelector(position).hasChildNodes()){ 
+        document.querySelector(position).appendChild(rac);
+    }
+
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
     rac.children[i].style.opacity = 0.5;}
+
+//
+if ((overlap(rac1, rac2) === true) || (overlap(rac1, rac3) === true)){
+    raccoon1Hide();
+}
 }
 
 function raccoon2Hide() {
@@ -177,12 +145,17 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //place raccoon at random spot
 let rac = document.querySelector(".raccoon2");
-document.querySelector(position).appendChild(rac);
+if (!document.querySelector(position).hasChildNodes()){ 
+    document.querySelector(position).appendChild(rac);
+}
 // rac.style.border = "1px solid black"
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0;}
+    rac.children[i].style.opacity = 0.5;}
+    if ((overlap(rac2, rac1) === true) || (overlap(rac2, rac3) === true)) {
+        raccoon2Hide();
+    }    
 }
 
 function raccoon3Hide() {
@@ -192,14 +165,41 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //place raccoon at random spot
 let rac = document.querySelector(".raccoon3");
-document.querySelector(position).appendChild(rac);
+if (!document.querySelector(position).hasChildNodes()){ 
+    document.querySelector(position).appendChild(rac);
+}
 // rac.style.border = "1px solid black"
 
 //make transparent 
 for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0;}
+    rac.children[i].style.opacity = 0.5;}
+
+if ((overlap(rac3, rac1) === true) || (overlap(rac3, rac2) === true)) {
+        raccoon3Hide();
+    }   
 }
 
+//raccoon overlap check
+function overlap(el1, el2) {
+    let div1 = el1.getBoundingClientRect();
+    let div2 = el2.getBoundingClientRect();
+    console.log(div1, div2)
+return !(
+    div1.top + 2 > div2.bottom -2 ||
+    div1.right - 2 < div2.left + 2 ||
+    div1.bottom - 2 < div2.top + 2||
+    div1.left + 2 > div2.right - 2) 
+}
+
+// test button
+    document.querySelector(".test2").addEventListener('click', allHide);
+
+function allHide() {
+    raccoon1Hide()
+    raccoon2Hide()
+    raccoon3Hide()
+    console.log(overlap(rac1, rac2), overlap(rac2, rac3), overlap(rac1, rac3))
+}
 //test button
 // document.querySelector(".test1").addEventListener('click', (event) => {
 //     let rac = document.querySelector(".raccoon3")
@@ -215,9 +215,6 @@ for (let i = 0; i < rac.children.length; i++) {
 // document.querySelector(".test3").addEventListener('click', raccoon3Hide)
 
 //Raccoon Guess
-    //test button
-    // document.querySelector(".test2").addEventListener('click', winConditions);
-
     //function
 function raccoonGuess() {
     if (game !== 0) {
@@ -356,11 +353,11 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 //Win Conditions
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length = 5) {
+if (raccHitArr.length === 5) {
     game = 0;
     alert(`HOTDOG WINS! You really are the grill master.`)
     document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
-} else if (hdHitArr.length = 5) {
+} else if (hdHitArr.length === 5) {
     game = 0;
     alert(`RACCOON WINS! Those grubby paws are good for something.`)
     document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
