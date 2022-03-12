@@ -78,7 +78,7 @@ document.querySelector(".hotdog1").addEventListener('click',(event) => {
         countdown++
         let hd1 = document.querySelector(".hotdog1");
         event.target.appendChild(hd1);
-        raccoon1Hide();
+        raccoonHide(rac1);
         startAlert();
         }
     })
@@ -91,7 +91,7 @@ document.querySelector(".hotdog2").addEventListener('click',(event) => {
         countdown++
         let hd2 = document.querySelector(".hotdog2");
         event.target.appendChild(hd2);
-        raccoon2Hide();
+        raccoonHide(rac2);
         startAlert();
         }
     })
@@ -104,7 +104,7 @@ document.querySelector(".hotdog3").addEventListener('click',(event) => {
         countdown++
         let hd3 = document.querySelector(".hotdog3");
         event.target.appendChild(hd3);
-        raccoon3Hide();
+        raccoonHide(rac3);
         startAlert();
         }
     })
@@ -116,67 +116,26 @@ let rac2 = document.querySelector(".raccoon2");
 let rac3 = document.querySelector(".raccoon3");
 
 //Raccoon Hide
-function raccoon1Hide() {
+
+function raccoonHide(elem) {
     //randomly generate div number
 let randomPlace = Math.floor(Math.random() * 176);
 let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //place raccoon at random spot
-    let rac = document.querySelector(".raccoon1");
     if (!document.querySelector(position).hasChildNodes()){ 
-        document.querySelector(position).appendChild(rac);
+        document.querySelector(position).appendChild(elem);
     }
 
 
 //make transparent 
-for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0.5;}
+for (let i = 0; i < elem.children.length; i++) {
+    elem.children[i].style.opacity = 0.5;}
 
 //
 if ((overlap(rac1, rac2) === true) || (overlap(rac1, rac3) === true)){
-    raccoon1Hide();
+    raccoonHide(elem);
 }
-}
-
-function raccoon2Hide() {
-    //randomly generate div number
-let randomPlace = Math.floor(Math.random() * 176);
-let position = `div.yardBoundDiv.sq${randomPlace}`
-
-//place raccoon at random spot
-let rac = document.querySelector(".raccoon2");
-if (!document.querySelector(position).hasChildNodes()){ 
-    document.querySelector(position).appendChild(rac);
-}
-// rac.style.border = "1px solid black"
-
-//make transparent 
-for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0.5;}
-    if ((overlap(rac2, rac1) === true) || (overlap(rac2, rac3) === true)) {
-        raccoon2Hide();
-    }    
-}
-
-function raccoon3Hide() {
-    //randomly generate div number
-let randomPlace = Math.floor(Math.random() * 176);
-let position = `div.yardBoundDiv.sq${randomPlace}`
-
-//place raccoon at random spot
-let rac = document.querySelector(".raccoon3");
-if (!document.querySelector(position).hasChildNodes()){ 
-    document.querySelector(position).appendChild(rac);
-}
-// rac.style.border = "1px solid black"
-
-//make transparent 
-for (let i = 0; i < rac.children.length; i++) {
-    rac.children[i].style.opacity = 0.5;}
-
-if ((overlap(rac3, rac1) === true) || (overlap(rac3, rac2) === true)) {
-        raccoon3Hide();
-    }   
 }
 
 //raccoon overlap check
