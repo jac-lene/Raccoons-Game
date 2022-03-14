@@ -2,8 +2,6 @@
     //DRY
 
 //Board
-    //FIND FONT
-    //prevent overlap
     //add to artwork
        //add "bitemarks" to the hit div to visualize chomp
 
@@ -30,6 +28,7 @@ let guessed = false;
 let raccHitArr = [];
 let hdHitArr = [];
 let game = 1;
+let elem1 = undefined;
 
 //Divs for Boards
 for (let i = 0; i <= 251; i++) {
@@ -56,6 +55,12 @@ for (let i = 0; i <= 101; i++) {
     document.querySelector(".grillBoundBox").appendChild(grillDivs)
 }
 
+// for (let i = 0; i <= 131; i++) {
+//     let horizDivs = document.createElement("div")
+//     horizDivs.className = `horiz${i} sq${i} horizDiv`
+//     document.querySelector(".horizBoundBox").appendChild(horizDivs)
+// }
+
 //Class Check Functions
 
 function hasDog(elem) {
@@ -73,7 +78,7 @@ function hasRac(elem) {
 //HotDog Placement
 document.querySelector(".hotdog1").addEventListener('click',(event) => {
     document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
-        if ((hasDog(event.target) == false) && (placed1 == false) && !(event.target.classList.contains("grillBoundBox"))) {
+        if ((hasDog(event.target) == false) && (placed1 === false) && !(event.target.classList.contains("grillBoundBox"))) {
         placed1 = true;
         countdown++
         let hd1 = document.querySelector(".hotdog1");
@@ -83,7 +88,8 @@ document.querySelector(".hotdog1").addEventListener('click',(event) => {
         startAlert();
         }
     })
-})
+    }
+)
 
 document.querySelector(".hotdog2").addEventListener('click',(event) => {
     document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
@@ -222,26 +228,8 @@ function lemonThrow() {
         //if to prevent clicks on random stuff
  if ((game !== 0) && (guessed === false) && !(event.target.classList.contains("miss")) && !(event.target.classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox")) && !(event.target.classList.contains("raccoon1")) && !(event.target.classList.contains("raccoon2")) && !(event.target.classList.contains("raccoon3"))) {
 
-        //local variables
     guessed = true;
 
-    // if (event.target.classList.contains("raccoon")) {
-    //           //find board element
-    // var offsets = event.target.getBoundingClientRect();
-    // var bottom = offsets.bottom;
-    // var left = offsets.left;
-    // var bottomCenter = bottom - 10;
-    // var leftCenter = left + 14;
-    // }
-    // event.target.style.zIndex = -99;
-    // let boardDiv = document.elementFromPoint(leftCenter, bottomCenter)
-    // console.log(`event target: ${event.target.classList}, element from point: ${boardDiv.classList}`)
-
-    //   //find top element at that location
-    // if (boardDiv.classList === null) {
-    //     lemonThrow();} 
-    // else { 
-        //if miss, else hit
         if (!(event.target.classList.contains("raccoon")) || (event.target.classList.contains("r2")) || (event.target.classList.contains("r10")) || (event.target.classList.contains("r12"))) {
             event.target.classList.add("miss");
             event.target.style.backgroundColor = "greenyellow";
@@ -260,9 +248,6 @@ function lemonThrow() {
             setTimeout(raccoonGuess, 1000)
             }
         }})}}
-    // }) 
-// }
-// }
 //LEMON THROW END!!
 
 //Click Test for Classes
@@ -282,8 +267,8 @@ document.querySelector(".yardContainer").addEventListener('click', (event) => {
 function resizeInfo() {
     if (gameStarted === true) {
         document.querySelector(".infoBox").style.height = '100px';
-        document.querySelector(".infoBox").style.marginBottom = "15px";
-        document.querySelector("h1").style.marginBottom = "15px";
+        document.querySelector(".infoBox").style.marginBottom = "40px";
+        document.querySelector("h1").style.marginBottom = "25px";
     }
 }
 
@@ -293,7 +278,7 @@ function startAlert() {
         document.querySelector(".infoBox").innerHTML = `those raccoons are hiding out here somewhere..... <br><br>toss a lemon into the backyard and see if you can hit one`;
         gameStarted = true;
         resizeInfo();
-        setTimeout(lemonThrow, 1000)
+        setTimeout(lemonThrow, 3000)
     }
 }
 

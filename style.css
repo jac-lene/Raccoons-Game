@@ -5,16 +5,17 @@ body {
 h1 {
     color: rgb(0, 0, 0);
     text-align: center;
-    margin-bottom: 100px;
-    margin-top: 20px;
-    font-family: 'Barriecito', cursive;
-    font-size: 100px;
+    margin-bottom: 80px;
+    margin-top: 30px;
+    font-family: 'Barriecito', sans-serif;
+    /* font-family: 'Chelsea Market', sans-serif; */
+    font-size: 120px;
 }
 
 .reset {
     background-color: rgb(255, 255, 255);
     font-size: 20px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .final {
@@ -32,12 +33,23 @@ h1 {
     height: 100px;
     width: 600px;
     margin: 0 auto;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 20px;
+    font-size: 30px;
+    font-family: 'Chelsea Market', sans-serif;
+    /* font-family: 'Patrick Hand SC', sans-serif; */
     text-align: center;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.boardContainer {
+    /* display: grid; */
+    display: flex;
+    justify-content: center;
+    gap: 80px;
 }
 
 .yardBoundBox {
@@ -63,6 +75,27 @@ h1 {
     margin: 1px;
 }
 
+/* .horizBoundBox {
+    height: 290px;
+    width: 244px;
+    border: 1px solid black;
+    position: absolute;
+    margin-top: 22px;
+    margin-right: 153px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+} */
+
+.horizDiv {
+    height: 20px;
+    width: 20px;
+    margin: 1px;
+    background-color: white;
+}
+
 .grillBoundBox {
     /* border: 1px solid black; */
     height: 130px;
@@ -75,16 +108,12 @@ h1 {
     justify-content: center;
     align-content: flex-start;
     flex: none;
-    /* pointer-events: none */
 }
 
 .grillBoundDiv {
-    /* background-color: rgb(114, 113, 113); */
-    /* border: .5px dashed black; */
     height: 20px;
     width: 20px;
     margin: 1px;
-    
 }
 
 .yardContainer, .grillContainer {
@@ -98,13 +127,6 @@ h1 {
     justify-content: center;
     align-content: flex-start;
     flex: none;
-}
-
-.boardContainer {
-    /* display: grid; */
-    display: flex;
-    justify-content: center;
-    gap: 30px;
 }
 
 .buttonContainer {
@@ -231,9 +253,10 @@ h1 {
     border-bottom-right-radius: 100%;
 } 
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     
     h1 {
+        margin-top: 20px;
         margin-bottom: 80px;
     }
 
@@ -257,7 +280,7 @@ h1 {
 
     h1 {
         margin-bottom: 60px;
-        font-size: 30px;
+        font-size: 80px;
     }
 
     .infoBox {
@@ -283,7 +306,6 @@ h1 {
 
         h1 {
             margin-bottom: 70px;
-            font-size: 30px;
         }
     
         .infoBox {
@@ -306,6 +328,5 @@ h1 {
         }
     }
 }
-    
-    
+     
 }
