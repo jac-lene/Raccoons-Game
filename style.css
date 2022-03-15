@@ -37,7 +37,7 @@ h1 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Chelsea Market', sans-serif;
     /* font-family: 'Patrick Hand SC', sans-serif; */
     text-align: center;
@@ -89,12 +89,12 @@ h1 {
     flex: none;
 } */
 
-.horizDiv {
+/* .horizDiv {
     height: 20px;
     width: 20px;
     margin: 1px;
     background-color: white;
-}
+} */
 
 .grillBoundBox {
     /* border: 1px solid black; */
@@ -117,16 +117,15 @@ h1 {
 }
 
 .yardContainer, .grillContainer {
-    /* border: 1px solid black; */
-    height: 300px;
+    /* border-bottom: 8px dotted black; */
+    height: 310px;
     width: 400px;
-    /* margin-bottom: 30px; */
-    /* margin: 20px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
     flex: none;
+    position: relative;
 }
 
 .buttonContainer {
@@ -253,7 +252,7 @@ h1 {
     border-bottom-right-radius: 100%;
 } 
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
     
     h1 {
         margin-top: 20px;
@@ -266,16 +265,13 @@ h1 {
 
     .boardContainer {
         justify-content: center;
+        gap: 20px;
+    }
+
+    .boxContainer {
         gap: 10px;
     }
 
-    .yardContainer, .grillContainer {
-        /* border: 1px solid black; */
-        height: 300px;
-        width: 400px;
-        margin-bottom: 20px;
-        /* margin: 10px; */
-    }
 @media (max-width: 830px) {
 
     h1 {
@@ -299,7 +295,7 @@ h1 {
 
     .boardContainer {
         display: grid;
-        gap: 10px;
+        gap: 20px;
     }
    
     @media (max-width: 600px) {
@@ -322,10 +318,6 @@ h1 {
             gap: 10px;
         }
     
-        .boardContainer {
-            display: grid;
-            gap: 10px;
-        }
     }
 }
      

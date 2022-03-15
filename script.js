@@ -6,8 +6,8 @@
        //add "bitemarks" to the hit div to visualize chomp
 
 //GAMEPLAY
- //Guessing
-    //work  on turn taking process
+    //hone in Guess Zone when dog gets hit
+    //media query functions?
 
 // Stretch Goals   
     //div element that gets unhidden for a hit/miss notification, click to hide again
@@ -174,11 +174,30 @@ return !(
 // })
 // document.querySelector(".test3").addEventListener('click', raccoon3Hide)
 
+function racTurn() {
+    if (window.innerWidth < 800) {
+        document.querySelector(".grillContainer").style.borderTop = "8px dotted black";
+        document.querySelector(".yardContainer").style.borderBottom = "0px";
+    } else {
+    document.querySelector(".grillContainer").style.borderTop = "0px";
+    document.querySelector(".grillContainer").style.borderBottom = "8px dotted black";
+    document.querySelector(".yardContainer").style.borderBottom = "0px";
+    }
+}
+
+function dogTurn() {
+    document.querySelector(".yardContainer").style.borderBottom = "8px dotted black";
+    document.querySelector(".grillContainer").style.borderTop = "0px";
+    document.querySelector(".grillContainer").style.borderBottom = "0px";
+}
+
 //Raccoon Guess
     //function
 function raccoonGuess() {
     if (game !== 0) {
     guessed = false;
+    document.querySelector(".infoBox").style.display = 'none';
+
     let randomPlace = Math.floor(Math.random() * 252);
    
    //find coordinates of random Div
@@ -188,9 +207,10 @@ function raccoonGuess() {
     var topCenter = top + 5;
     var leftCenter = left + 12;
     let element = document.elementFromPoint(leftCenter, topCenter)
+    console.log(top, left, topCenter, leftCenter, offsets, element)
 
    //find top element at that location
-   if (element.classList === null) {
+   if (element === null) {
        raccoonGuess();
    } else {
     let classArr = element.classList;
@@ -206,15 +226,17 @@ function raccoonGuess() {
         hdHitArr.push(foundElem[0]);
         console.log(hdHitArr);
         setTimeout(winConditions, 800);
-        document.querySelector(".infoBox").innerHTML = `You got got!`;
-        setTimeout(lemonThrow, 800)
+        // document.querySelector(".infoBox").innerHTML = `You got got!`;
+        setTimeout(dogTurn, 1200);
+        setTimeout(lemonThrow, 1200)
         } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
             raccoonGuess();
         } else {
             foundElem[0].style.backgroundColor = "grey";
             foundElem[0].classList.add("miss");
-            document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
-            setTimeout(lemonThrow, 800)
+            // document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
+            setTimeout(dogTurn, 1200);
+            setTimeout(lemonThrow, 1200)
         }
 }}}
 //RACCOON GUESS END!!
@@ -222,9 +244,9 @@ function raccoonGuess() {
 //Lemon Throw (User's Turn)
 function lemonThrow() {
     if (game !== 0) {
-    document.querySelector(".infoBox").innerHTML = `Fight off the rodents!`;
+    // document.querySelector(".infoBox").innerHTML = `Fight off the rodents!`;
+    document.querySelector(".infoBox").style.display = 'none';
     document.querySelector(".yardContainer").addEventListener('click', (event) => {
-
         //if to prevent clicks on random stuff
  if ((game !== 0) && (guessed === false) && !(event.target.classList.contains("miss")) && !(event.target.classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox")) && !(event.target.classList.contains("raccoon1")) && !(event.target.classList.contains("raccoon2")) && !(event.target.classList.contains("raccoon3"))) {
 
@@ -235,7 +257,8 @@ function lemonThrow() {
             event.target.style.backgroundColor = "greenyellow";
             event.target.style.opacity = 1;
             document.querySelector(".infoBox").innerHTML = `No dice. I think I hear something shuffling around the grill...`;
-            setTimeout(raccoonGuess, 1000)
+            setTimeout(racTurn, 1000);
+            setTimeout(raccoonGuess, 2000)
         } else {
             event.target.style.backgroundColor = "darkred";
             event.target.style.opacity = 1;
@@ -245,7 +268,8 @@ function lemonThrow() {
             console.log(raccHitArr);
             document.querySelector(".infoBox").innerHTML = `Got 'em! Now they're gonna be mad...`;
             setTimeout(winConditions, 800);
-            setTimeout(raccoonGuess, 1000)
+            setTimeout(racTurn, 1000);
+            setTimeout(raccoonGuess, 2000)
             }
         }})}}
 //LEMON THROW END!!
@@ -266,9 +290,10 @@ document.querySelector(".yardContainer").addEventListener('click', (event) => {
 //Resize Infobox after game starts
 function resizeInfo() {
     if (gameStarted === true) {
-        document.querySelector(".infoBox").style.height = '100px';
+        document.querySelector(".infoBox").style.height = '200px';
         document.querySelector(".infoBox").style.marginBottom = "40px";
         document.querySelector("h1").style.marginBottom = "25px";
+        document.querySelector(".infoBox").style.borderRadius = '50%';
     }
 }
 
@@ -278,6 +303,7 @@ function startAlert() {
         document.querySelector(".infoBox").innerHTML = `those raccoons are hiding out here somewhere..... <br><br>toss a lemon into the backyard and see if you can hit one`;
         gameStarted = true;
         resizeInfo();
+        setTimeout(dogTurn, 3000);
         setTimeout(lemonThrow, 3000)
     }
 }
