@@ -7,7 +7,6 @@
 
 //GAMEPLAY
     //hone in Guess Zone when dog gets hit
-    //media query functions?
 
 // Stretch Goals   
     //div element that gets unhidden for a hit/miss notification, click to hide again
@@ -138,7 +137,7 @@ let position = `div.yardBoundDiv.sq${randomPlace}`
 
 //make transparent 
 for (let i = 0; i < elem.children.length; i++) {
-    elem.children[i].style.backgroundColor = "rgb(66, 216, 76)";
+    elem.children[i].style.backgroundColor = "rgb(8, 225, 41)";
     elem.children[i].style.padding = "0px";
     elem.children[i].style.borderRadius = "0%";
     elem.children[i].style.margin = "1px";
@@ -218,9 +217,17 @@ function raccoonGuess() {
    //variable for element using classes from class list
     let foundElem = document.querySelectorAll(`.${classArr[0]}`);
 
+    //if there's a dog hit, continue search on a different zone
+    //break board into thirds to hone down search
+
+
     if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
-        foundElem[0].style.opacity = 0.2;
-        foundElem[1].style.opacity = 0.2;
+        foundElem[0].style.opacity = 0;
+        foundElem[1].style.opacity = 0;
+        // foundElem[0].style.maskImage = "url(mask.png)";
+        // foundElem[1].style.maskImage = "url(mask.png)";
+        // foundElem[0].style.backgroundColor = "black";
+        // foundElem[1].style.backgroundColor = "black";
         foundElem[0].classList.add("dogHit");
         foundElem[1].classList.add("dogHit");
         hdHitArr.push(foundElem[0]);
@@ -300,11 +307,11 @@ function resizeInfo() {
 // start alert
 function startAlert() {
     if ((countdown === 3) && (game !== 0)) {
-        document.querySelector(".infoBox").innerHTML = `those raccoons are hiding out here somewhere..... <br><br>toss a lemon into the backyard and see if you can hit one`;
+        document.querySelector(".infoBox").innerHTML = `<p class="info">those raccoons are hiding out here somewhere... toss a lemon into the backyard and see if you can hit one<p>`;
         gameStarted = true;
         resizeInfo();
-        setTimeout(dogTurn, 3000);
-        setTimeout(lemonThrow, 3000)
+        setTimeout(dogTurn, 4000);
+        setTimeout(lemonThrow, 4000)
     }
 }
 
@@ -318,15 +325,22 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 //Win Conditions
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length === 27) {
+if (raccHitArr.length === 1) {
     game = 0;
-    alert(`HOTDOG WINS! You really are the grill master.`)
-    document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
-} else if (hdHitArr.length === 27) {
+    document.querySelector(".winner").style.display = "block";
+} else if (hdHitArr.length === 1) {
     game = 0;
-    alert(`RACCOON WINS! Those grubby paws are good for something.`)
-    document.querySelector(".infoBox").innerHTML = `Press RESET to play again!`;
+    document.querySelector(".loser").style.display = "block";
 }
 }
 
-
+//exit buttons
+document.querySelector(".exit1").addEventListener('click', function() {
+    document.querySelector(".winner").style.display = "none";
+})
+document.querySelector(".exit2").addEventListener('click', function() {
+    document.querySelector(".loser").style.display = "none";
+})
+document.querySelector(".exit3").addEventListener('click', function() {
+    document.querySelector(".welcome").style.display = "none";
+})

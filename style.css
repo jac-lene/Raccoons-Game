@@ -5,8 +5,8 @@ body {
 h1 {
     color: rgb(0, 0, 0);
     text-align: center;
-    margin-bottom: 80px;
-    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-top: 20px;
     font-family: 'Barriecito', sans-serif;
     /* font-family: 'Chelsea Market', sans-serif; */
     font-size: 120px;
@@ -14,8 +14,9 @@ h1 {
 
 .reset {
     background-color: rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 28px;
     margin-top: 50px;
+    font-family: 'Patrick Hand SC', sans-serif;
 }
 
 .final {
@@ -30,19 +31,107 @@ h1 {
 
 .infoBox {
     /* border: 1px solid black; */
-    height: 100px;
+    height: 150px;
     width: 600px;
     margin: 0 auto;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 20px;
-    font-family: 'Chelsea Market', sans-serif;
-    /* font-family: 'Patrick Hand SC', sans-serif; */
+    /* font-family: 'Chelsea Market', sans-serif; */
+    font-family: 'Patrick Hand SC', sans-serif;
     text-align: center;
     background-color: white;
     border-radius: 50%;
+}
+
+.info {
+    font-size: 33px;
+    margin-left: 90px;
+}
+
+.winCont, .loseCont, .welcCont {
+    display: flex;
+    justify-content: center;
+}
+.winner, .loser, .welcome {
+    position: absolute;
+    height: 400px;
+    width: 500px;
+    top: 170px;
+    z-index: 1000;
+    background-color: rgb(102, 252, 60);
+    border: 20px solid black;
+    margin: 0 auto;
+    font-size: 35px;
+    text-align: center;
+    display: none;
+}
+
+.loser {
+    background-color: rgb(255, 143, 118) !important;
+}
+
+h2 {
+    font-family: 'Barriecito', sans-serif;
+    font-size: 80px;
+    margin: 10px;
+    margin-top: 50px;
+}
+
+p {
+    font-family: 'Patrick Hand SC', sans-serif;
+    margin: 30px;
+    font-size: 40px;
+}
+
+.welcome {
+    display: block;
+    height: 510px;
+    width: 850px;
+    top: 175px;
+    background-color: rgb(253, 235, 37);
+}
+
+h3 {
+    font-family: 'Barriecito', sans-serif;
+    font-size: 60px;
+    margin: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.p2 {
+    font-size: 38px;
+    margin: 20px;
+}
+
+ul {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+li {
+    font-family: 'Patrick Hand SC', sans-serif;
+    font-size: 30px;
+    list-style: none;
+    margin: 0px 30px 0px 20px;
+}
+
+.small {
+    font-size: 20px;
+    margin: 50px;
+}
+
+.exit1, .exit2, .exit3 {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Patrick Hand SC', sans-serif;
+    cursor: pointer;
 }
 
 .boardContainer {
@@ -134,8 +223,8 @@ h1 {
 }
 
 .yardDiv {
-    background-color: rgb(66, 216, 76);
-    border: .5px dashed rgb(153, 255, 10);
+    background-color: rgb(8, 225, 41);
+    border: .5px dashed rgb(206, 254, 130);
     height: 20px;
     width: 20px;
     margin: 0px;
@@ -253,18 +342,8 @@ h1 {
 } 
 
 @media (max-width: 900px) {
-    
-    h1 {
-        margin-top: 20px;
-        margin-bottom: 80px;
-    }
-
-    .infoBox {
-        margin-bottom: 80px;
-    }
 
     .boardContainer {
-        justify-content: center;
         gap: 20px;
     }
 
@@ -272,11 +351,38 @@ h1 {
         gap: 10px;
     }
 
+    .welcome {
+        width: 700px;
+    }
+    
+    h3 {
+        margin-top: 20px;
+    }
+    
+    .p2 {
+        font-size: 35px;
+        margin: 20px;
+    }
+    
+    ul {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+    
+    li {
+        font-size: 30px;
+        margin: 0px 50px 0px 20px;
+    }
+    
+    .small {
+        margin: 45px 0px 0px -40px;
+    }
+
+
 @media (max-width: 830px) {
 
     h1 {
-        margin-bottom: 60px;
-        font-size: 80px;
+        font-size: 100px;
     }
 
     .infoBox {
@@ -301,7 +407,7 @@ h1 {
     @media (max-width: 600px) {
 
         h1 {
-            margin-bottom: 70px;
+            font-size: 80px;
         }
     
         .infoBox {
@@ -310,7 +416,6 @@ h1 {
         }
     
         .hotdogs {
-            display: flex;
             gap: 20px;
         } 
     
@@ -318,6 +423,58 @@ h1 {
             gap: 10px;
         }
     
+        .winner, .loser {
+            height: 320px;
+            width: 400px;
+            border: 15px solid black;
+        }
+
+        h2 {
+            font-size: 70px;
+            margin: 10px;
+            margin-top: 30px;
+        }
+        
+        p {
+            font-family: 'Patrick Hand SC', sans-serif;
+            margin: 30px;
+            font-size: 35px;
+        }
+        
+        .exit1, .exit2, .exit2 {
+            right: 10px;
+            top: 10px;
+            font-size: 20px;
+        }
+
+        .welcome {
+            width: 400px;
+            height: 560px;
+        }
+        
+        h3 {
+            font-size: 40px;
+            margin: 30px 50px 10px 50px;
+        }
+        
+        .p2 {
+            font-size: 28px;
+            margin: 10px;
+            margin-top: 25px;
+        }
+        
+        ul {
+            margin-top: 0px;
+        }
+        
+        li {
+            font-size: 28px;
+            margin: 0px 50px 0px 20px;
+        }
+        
+        .small {
+            margin: 35px 10px 0px -30px;
+        }
     }
 }
      
