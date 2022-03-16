@@ -1,3 +1,16 @@
-# project1-personal
+# Raccoons
 
-READMEEEE
+Link to Play : 
+
+Images 
+![alttext] (img)
+
+## Objective
+
+## Code Styles
+
+## Playing the Game
+
+## Wireframes
+
+## Major Hurdles
