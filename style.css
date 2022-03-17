@@ -175,23 +175,26 @@ li {
 }
 
 .leftBoundBox {
+    z-index: 1;
     height: 308px;
     width: 134px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: absolute;
     margin-top: 0px;
-    margin-right: 262px;
+    margin-right: 264px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
     flex: none;
+    /* display: none; */
 }
 
 .centerBoundBox {
+    z-index: 1;
     height: 308px;
     width: 134px;
-    border: 1px solid black;
+    /* border: 1px dashed rgb(215, 215, 215); */
     position: absolute;
     margin-top: 0px;
     display: flex;
@@ -199,27 +202,34 @@ li {
     justify-content: center;
     align-content: flex-start;
     flex: none;
+    /* display: none; */
 }
 
 .rightBoundBox {
+    z-index: 1;
     height: 308px;
     width: 134px;
-    border: 1px solid black;
+    /* border: 1px dashed rgb(215, 215, 215); */
     position: absolute;
     margin-top: 0px;
-    margin-left: 262px;
+    margin-left: 264px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
     flex: none;
+    /* display: none; */
 }
 
 .zoneDiv {
+    z-index: 1;
     height: 20px;
     width: 20px;
-    margin: 1px;
-    background-color: white;
+    /* margin: 1px; */
+    background-color: rgb(154, 154, 154);
+    border: 1px dashed rgb(215, 215, 215);
+    /* opacity: 0; */
+    /* display: none; */
 }
 
 .grillBoundBox {
@@ -353,7 +363,7 @@ li {
     position: relative;
     right: 1px;
     bottom: 0px;
-    z-index: 999;
+    z-index: 9999;
     cursor: pointer;
 }
 
@@ -362,6 +372,7 @@ li {
     height: 20px;
     width: 20px;
     padding-bottom: 2px;
+    z-index: 9999;
 }
 
  .h1 {

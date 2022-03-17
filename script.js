@@ -201,9 +201,134 @@ function dogTurn() {
 
 //Raccoon Guess
 
-// document.querySelector(".test1").addEventListener('click', raccoonGuess)
 
-    //function
+//big if/then
+//zones start transparent
+
+//if nothing hit, do big board guess
+    //if hit, make board opaque and left board guess 
+
+
+  //if there's a dog hit, continue search on a different zone
+    //break board into thirds to hone down search
+
+
+
+document.querySelector(".test1").addEventListener('click', raccoonGuess)
+
+//function for raccoon play
+
+function raccoonPlay(elem, num) {
+    let randomPlace = Math.floor(Math.random() * num);
+       
+       //find coordinates of random Div
+        var offsets = document.querySelector(elem + randomPlace).getBoundingClientRect();
+        var top = offsets.top;
+        var left = offsets.left;
+        var topCenter = top + 5;
+        var leftCenter = left + 12;
+        let element = document.elementFromPoint(leftCenter, topCenter)
+        // console.log(elem+randomPlace, element)
+    
+       //find top element at that location
+       if (element === null) {
+           raccoonGuess();
+       } else {
+        let classArr = element.classList;
+       
+       //variable for element using classes from class list
+        let foundElem = document.querySelectorAll(`.${classArr[0]}`);
+    
+        if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
+            for (let i = 0; i <= 1; i++) {
+                foundElem[i].style.opacity = 0;
+                foundElem[i].classList.add("dogHit");
+            }
+            hdHitArr.push(foundElem[0]);
+            console.log(hdHitArr);
+            setTimeout(winConditions, 800);
+            // document.querySelector(".infoBox").innerHTML = `You got got!`;
+            setTimeout(dogTurn, 1200);
+            setTimeout(lemonThrow, 1200)
+            } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
+                raccoonGuess();
+            } else {
+                foundElem[0].style.backgroundColor = "grey";
+                foundElem[0].classList.add("miss");
+                // document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
+                setTimeout(dogTurn, 1200);
+                setTimeout(lemonThrow, 1200)
+            }
+    }
+}
+
+function topDogHit(elem) {
+    let children = document.querySelector(elem).children;
+    for (let i = 0; i < children.length; i++) {
+
+    var offsets = children[i].getBoundingClientRect();
+    var top = offsets.top;
+    var left = offsets.left;
+    var topCenter = top + 5;
+    var leftCenter = left + 12;
+    let topElement = document.elementFromPoint(leftCenter, topCenter)
+    // console.log(children[i], topElement)
+
+   //find top element at that location
+   if (topElement === null) {
+       dogHit(elem)
+   } else {
+    let classArr = topElement.classList; 
+    if (classArr.contains("dogHit") === true) {
+        return true
+    } 
+    }
+   }
+}
+
+
+function dogHit(elem) {
+    
+    let children = document.querySelector(elem).children;
+    for (let i = 0; i < children.length; i++) {
+
+    if (children[i].classList.contains("dogHit")) {
+            return true
+        } else {return false}
+
+
+
+
+    }
+}
+
+
+
+    //function test for thirded board
+//     function raccoonGuess() {
+//         if (game !== 0) {
+//         guessed = false;
+//         document.querySelector(".infoBox").style.display = 'none';
+
+//     if (!dogHit(".leftBoundBox") && !topDogHit(".leftBoundBox") && !dogHit(".centerBoundBox") && !topDogHit(".centerBoundBox") && !dogHit(".rightBoundBox") && !topDogHit(".rightBoundBox")) {
+//         raccoonPlay(".grillDiv.sq", 252)
+//     } else if (dogHit(".leftBoundBox") && topDogHit(".leftBoundBox")) {
+//         raccoonPlay(".left", 84)
+//     } else if (dogHit(".centerBoundBox") && topDogHit(".centerBoundBox")) {
+//         raccoonPlay(".center", 84)
+//     } else if (dogHit(".rightBoundBox") && topDogHit(".rightBoundBox")) {
+//         raccoonPlay(".right", 84)
+//     } else {
+//         console.log("something wrong")
+//     }
+      
+    
+//     } 
+// }
+//END THIRDED GUESS
+   
+
+
 function raccoonGuess() {
     if (game !== 0) {
     guessed = false;
@@ -218,7 +343,7 @@ function raccoonGuess() {
     var topCenter = top + 5;
     var leftCenter = left + 12;
     let element = document.elementFromPoint(leftCenter, topCenter)
-    console.log(top, left, topCenter, leftCenter, offsets, element)
+    // console.log(top, left, topCenter, leftCenter, offsets, element)
 
    //find top element at that location
    if (element === null) {
@@ -228,10 +353,6 @@ function raccoonGuess() {
    
    //variable for element using classes from class list
     let foundElem = document.querySelectorAll(`.${classArr[0]}`);
-
-    //if there's a dog hit, continue search on a different zone
-    //break board into thirds to hone down search
-
 
     if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
         for (let i = 0; i <= 1; i++) {
@@ -259,7 +380,6 @@ function raccoonGuess() {
 //Lemon Throw (User's Turn)
 function lemonThrow() {
     if (game !== 0) {
-    // document.querySelector(".infoBox").innerHTML = `Fight off the rodents!`;
     document.querySelector(".infoBox").style.display = 'none';
     document.querySelector(".yardContainer").addEventListener('click', (event) => {
         //if to prevent clicks on random stuff
