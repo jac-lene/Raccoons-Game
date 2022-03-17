@@ -33,11 +33,17 @@ The original concept for the game included some more detailed artwork, but I fou
 ![wireframes](/imgs/HOTDOGS.png)
 
 ## Teachable Moments
-A crucial tool needed to complete this project was ".getBoundingClientRect( )". Utilizing information from the bounding rectangles of raccoons, hotdogs, and other elements of the game I created the "guessing" AI for the raccoon player. 
+A crucial tool needed to complete this project was ".getBoundingClientRect( )". Utilizing information from the bounding rectangles of raccoons, hotdogs, and other elements, I created a smooth, bug free "guessing" AI for the raccoon player. 
 
 This tool was also helpful for the raccoon hiding function - randomly assigning locations to raccoons sometimes created overlaps which interfered with the game. Understanding where the raccoons were located and creating a conditional to keep them separate streamlined and simplified game functionality.
 
-Another helpful tool was keeping some empty buttons in the DOM so I could assign functions for testing outside of the normal turn taking structure. This allowed me to hone the raccoon guessing and hiding functions as well as test out some other elements of the game before firing them within the program order. 
+Another helpful process was keeping some empty buttons in the DOM so I could assign functions for testing outside of the normal turn taking structure. This allowed me to hone the raccoon guessing and hiding functions as well as test out some other elements of the game before firing them within the program order. 
+
+## Sign Off
+
+Thanks for checking out my game, <i>Raccoons</i>! I had a total blast concepting and coding this project. My goal was to create something that showcased my unique approach to programming along with my sense of humor and personal aesthetic. 
+
+I hope you enjoy playing <i>Raccoons</i> as much as I enjoyed making it. <3
 
 
 

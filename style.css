@@ -174,26 +174,53 @@ li {
     margin: 1px;
 }
 
-/* .horizBoundBox {
-    height: 290px;
-    width: 244px;
+.leftBoundBox {
+    height: 308px;
+    width: 134px;
     border: 1px solid black;
     position: absolute;
-    margin-top: 22px;
-    margin-right: 153px;
+    margin-top: 0px;
+    margin-right: 262px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
     flex: none;
-} */
+}
 
-/* .horizDiv {
+.centerBoundBox {
+    height: 308px;
+    width: 134px;
+    border: 1px solid black;
+    position: absolute;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+}
+
+.rightBoundBox {
+    height: 308px;
+    width: 134px;
+    border: 1px solid black;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 262px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    flex: none;
+}
+
+.zoneDiv {
     height: 20px;
     width: 20px;
     margin: 1px;
     background-color: white;
-} */
+}
 
 .grillBoundBox {
     /* border: 1px solid black; */

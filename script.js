@@ -58,11 +58,23 @@ for (let i = 0; i <= 101; i++) {
     document.querySelector(".grillBoundBox").appendChild(grillDivs)
 }
 
-// for (let i = 0; i <= 131; i++) {
-//     let horizDivs = document.createElement("div")
-//     horizDivs.className = `horiz${i} sq${i} horizDiv`
-//     document.querySelector(".horizBoundBox").appendChild(horizDivs)
-// }
+for (let i = 0; i <= 83; i++) {
+    let zoneDivs = document.createElement("div")
+    zoneDivs.className = `left${i} sq${i} zoneDiv`
+    document.querySelector(".leftBoundBox").appendChild(zoneDivs)
+}
+
+for (let i = 0; i <= 83; i++) {
+    let zoneDivs = document.createElement("div")
+    zoneDivs.className = `center${i} sq${i} zoneDiv`
+    document.querySelector(".centerBoundBox").appendChild(zoneDivs)
+}
+
+for (let i = 0; i <= 83; i++) {
+    let zoneDivs = document.createElement("div")
+    zoneDivs.className = `right${i} sq${i} zoneDiv`
+    document.querySelector(".rightBoundBox").appendChild(zoneDivs)
+}
 
 //Class Check Functions
 
@@ -312,10 +324,10 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 //Win Conditions
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length === 5) {
+if (raccHitArr.length === 14) {
     game = 0;
     document.querySelector(".winner").style.display = "block";
-} else if (hdHitArr.length === 5) {
+} else if (hdHitArr.length === 14) {
     game = 0;
     document.querySelector(".loser").style.display = "block";
 }
