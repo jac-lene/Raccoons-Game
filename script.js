@@ -277,7 +277,7 @@ function lemonThrow() {
         }})}}
 //LEMON THROW END!!
 
-//Click Test for Classes
+//Click Test for Classes (inessential to game)
 function clickTest(elem) {
     console.log(elem.className)
 }
@@ -290,22 +290,15 @@ document.querySelector(".yardContainer").addEventListener('click', (event) => {
     clickTest(event.target)
 })
 
-//Resize Infobox after game starts
-function resizeInfo() {
-    if (gameStarted === true) {
+// start alert
+function startAlert() {
+    if ((countdown === 3) && (game !== 0)) {
         document.querySelector(".infoBox").style.height = '200px';
         document.querySelector(".infoBox").style.marginBottom = "40px";
         document.querySelector("h1").style.marginBottom = "25px";
         document.querySelector(".infoBox").style.borderRadius = '50%';
-    }
-}
-
-// start alert
-function startAlert() {
-    if ((countdown === 3) && (game !== 0)) {
         document.querySelector(".infoBox").innerHTML = `<p class="info">those raccoons are hiding out here somewhere... toss a lemon into the backyard and see if you can hit one<p>`;
         gameStarted = true;
-        resizeInfo();
         setTimeout(dogTurn, 4000);
         setTimeout(lemonThrow, 4000)
     }
