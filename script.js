@@ -1,18 +1,13 @@
 //Code
     //DRY
+    //ReadMe
 
 //Board
-    //add to artwork
-       //add "bitemarks" to the hit div to visualize chomp
 
 //GAMEPLAY
     //hone in Guess Zone when dog gets hit
 
-// Stretch Goals   
-    //div element that gets unhidden for a hit/miss notification, click to hide again
-    //drag and drop or option to rotate https://www.kirupa.com/html5/drag.htm
-    //win screen???
-    //audio
+// Stretch Goals
 
 //global variables
 let gameStarted = false;
@@ -27,7 +22,16 @@ let guessed = false;
 let raccHitArr = [];
 let hdHitArr = [];
 let game = 1;
-let elem1 = undefined;
+
+//Hotdog variables
+let dog1 = document.querySelector(".hotdog1");
+let dog2 = document.querySelector(".hotdog2");
+let dog3 = document.querySelector(".hotdog3");
+
+//Raccoons variables
+let rac1 = document.querySelector(".raccoon1");
+let rac2 = document.querySelector(".raccoon2");
+let rac3 = document.querySelector(".raccoon3");
 
 //Divs for Boards
 for (let i = 0; i <= 251; i++) {
@@ -75,53 +79,44 @@ function hasRac(elem) {
 }
 
 //HotDog Placement
-document.querySelector(".hotdog1").addEventListener('click',(event) => {
+dog1.addEventListener('click', (event) => {
     document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
-        if ((hasDog(event.target) == false) && (placed1 === false) && !(event.target.classList.contains("grillBoundBox"))) {
-        placed1 = true;
-        countdown++
-        let hd1 = document.querySelector(".hotdog1");
-        hd1.style.cursor = "auto";
-        event.target.appendChild(hd1);
-        raccoonHide(rac1);
-        startAlert();
-        }
+            if ((hasDog(event.target) == false) && (placed1 === false) && !(event.target.classList.contains("grillBoundBox"))) {
+                placed1 = true;
+                countdown++
+                dog1.style.cursor = "auto";
+                event.target.appendChild(dog1);
+                raccoonHide(rac1);
+                startAlert();
+            }
+        })
     })
-    }
-)
 
-document.querySelector(".hotdog2").addEventListener('click',(event) => {
-    document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
-        if ((hasDog(event.target) == false) && (placed2 == false) && !(event.target.classList.contains("grillBoundBox"))) {
-        placed2 = true;
-        countdown++
-        let hd2 = document.querySelector(".hotdog2");
-        hd2.style.cursor = "auto";
-        event.target.appendChild(hd2);
-        raccoonHide(rac2);
-        startAlert();
+dog2.addEventListener('click', (event) => {
+    document.querySelector(".grillBoundBox").addEventListener('click', (event) => { 
+            if ((hasDog(event.target) == false) && (placed2 == false) && !(event.target.classList.contains("grillBoundBox"))) {
+            placed2 = true;
+            countdown++
+            dog2.style.cursor = "auto";
+            event.target.appendChild(dog2);
+            raccoonHide(rac2);
+            startAlert();
         }
     })
 })
 
-document.querySelector(".hotdog3").addEventListener('click',(event) => {
-    document.querySelector(".grillBoundBox").addEventListener('click', (event) => {    
+dog3.addEventListener('click', (event) => {
+    document.querySelector(".grillBoundBox").addEventListener('click', (event) => {   
         if ((hasDog(event.target) == false) && (placed3 == false) && !(event.target.classList.contains("grillBoundBox"))) {
         placed3 = true;
         countdown++
-        let hd3 = document.querySelector(".hotdog3");
-        hd3.style.cursor = "auto";
-        event.target.appendChild(hd3);
+        dog3.style.cursor = "auto";
+        event.target.appendChild(dog3);
         raccoonHide(rac3);
         startAlert();
         }
     })
 })
-
-//Raccoons variables
-let rac1 = document.querySelector(".raccoon1");
-let rac2 = document.querySelector(".raccoon2");
-let rac3 = document.querySelector(".raccoon3");
 
 //Raccoon Hide
 
@@ -146,17 +141,19 @@ for (let i = 0; i < elem.children.length; i++) {
 //line up w grid
 elem.style.right = "3px";
 
-//check overlap
+//check raccoon overlap
 if ((overlap(rac1, rac2) === true) || (overlap(rac1, rac3) === true)){
     raccoonHide(elem);
 }
 }
+//END RACCOON HIDE
+
 
 //overlap function
 function overlap(el1, el2) {
     let div1 = el1.getBoundingClientRect();
     let div2 = el2.getBoundingClientRect();
-    console.log(div1, div2)
+    // console.log(div1, div2)
 return !(
     div1.top + 2 > div2.bottom -2 ||
     div1.right - 2 < div2.left + 2 ||
@@ -191,6 +188,9 @@ function dogTurn() {
 }
 
 //Raccoon Guess
+
+// document.querySelector(".test1").addEventListener('click', raccoonGuess)
+
     //function
 function raccoonGuess() {
     if (game !== 0) {
@@ -222,14 +222,10 @@ function raccoonGuess() {
 
 
     if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
-        foundElem[0].style.opacity = 0;
-        foundElem[1].style.opacity = 0;
-        // foundElem[0].style.maskImage = "url(mask.png)";
-        // foundElem[1].style.maskImage = "url(mask.png)";
-        // foundElem[0].style.backgroundColor = "black";
-        // foundElem[1].style.backgroundColor = "black";
-        foundElem[0].classList.add("dogHit");
-        foundElem[1].classList.add("dogHit");
+        for (let i = 0; i <= 1; i++) {
+            foundElem[i].style.opacity = 0;
+            foundElem[i].classList.add("dogHit");
+        }
         hdHitArr.push(foundElem[0]);
         console.log(hdHitArr);
         setTimeout(winConditions, 800);
@@ -317,18 +313,16 @@ function startAlert() {
 
 //reset button
 document.querySelector(".reset").addEventListener('click', (event) => {
-    // countdown = 0;
-    // guessed = false;
     location.reload();
 })
 
 //Win Conditions
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length === 1) {
+if (raccHitArr.length === 5) {
     game = 0;
     document.querySelector(".winner").style.display = "block";
-} else if (hdHitArr.length === 1) {
+} else if (hdHitArr.length === 5) {
     game = 0;
     document.querySelector(".loser").style.display = "block";
 }
@@ -338,9 +332,11 @@ if (raccHitArr.length === 1) {
 document.querySelector(".exit1").addEventListener('click', function() {
     document.querySelector(".winner").style.display = "none";
 })
+
 document.querySelector(".exit2").addEventListener('click', function() {
     document.querySelector(".loser").style.display = "none";
 })
+
 document.querySelector(".exit3").addEventListener('click', function() {
     document.querySelector(".welcome").style.display = "none";
 })
