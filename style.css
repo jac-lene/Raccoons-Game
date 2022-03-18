@@ -187,7 +187,7 @@ li {
     justify-content: center;
     align-content: flex-start;
     flex: none;
-    /* display: none; */
+    display: none;
 }
 
 .centerBoundBox {
@@ -202,7 +202,7 @@ li {
     justify-content: center;
     align-content: flex-start;
     flex: none;
-    /* display: none; */
+    display: none;
 }
 
 .rightBoundBox {
@@ -218,7 +218,7 @@ li {
     justify-content: center;
     align-content: flex-start;
     flex: none;
-    /* display: none; */
+    display: none;
 }
 
 .zoneDiv {
@@ -229,7 +229,7 @@ li {
     background-color: rgb(154, 154, 154);
     border: 1px dashed rgb(215, 215, 215);
     /* opacity: 0; */
-    /* display: none; */
+    display: none;
 }
 
 .grillBoundBox {
