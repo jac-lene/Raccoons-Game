@@ -25,7 +25,7 @@ You can toss a lemon into the backyard (our version of firing into enemy waters)
 
 The raccoons then volley back, grabbing at your grill to snatch a bite of a hotdog. If they successfully chomp, the hit zone will disappear from the grill board.
 
-Each player has three "pieces" that each contain nine hit zones. A winner is announced after you or your opponent hits (or eats!) more than 2 total racoons or hotdogs worth of the other's pieces.
+Each player has three "pieces" that each contain nine hit zones. A winner is announced after you or your opponent hits (or eats!) more than 14 points, or over half the opponents pieces.
 
 ## Wireframes
 The original concept for the game included more detailed artwork, but I found that simplicity was an asset to gameplay. 

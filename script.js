@@ -22,6 +22,12 @@ let guessed = false;
 let raccHitArr = [];
 let hdHitArr = [];
 let divHitArr = [];
+let rac1Arr = [];
+let rac2Arr = [];
+let rac3Arr = [];
+let hd1Arr = [];
+let hd2Arr = [];
+let hd3Arr = [];
 let leftTurns = 0;
 let centerTurns = 0;
 let rightTurns = 0;
@@ -158,7 +164,7 @@ for (let i = 0; i < elem.children.length; i++) {
 elem.style.right = "3px";
 
 //check raccoon overlap
-if ((overlap(rac1, rac2) === true) || (overlap(rac1, rac3) === true)){
+if ((overlap(rac1, rac2) === true) || (overlap(rac1, rac3) === true) || (overlap(rac2, rac3) === true)){
     raccoonHide(elem);
 }
 }
@@ -218,96 +224,96 @@ function dogTurn() {
 
 
 
-document.querySelector(".test1").addEventListener('click', raccoonGuess)
+// document.querySelector(".test1").addEventListener('click', raccoonGuess)
 
 //function for raccoon play
 
-function raccoonPlay(elem, num) {
-    let randomPlace = Math.floor(Math.random() * num);
-    let grillSquare = document.querySelector(elem + randomPlace).classList;
+// function raccoonPlay(elem, num) {
+//     let randomPlace = Math.floor(Math.random() * num);
+//     let grillSquare = document.querySelector(elem + randomPlace).classList;
        
-       //find coordinates of random Div
-        var offsets = document.querySelector(elem + randomPlace).getBoundingClientRect();
-        var top = offsets.top;
-        var left = offsets.left;
-        var topCenter = top + 5;
-        var leftCenter = left + 12;
-        let element = document.elementFromPoint(leftCenter, topCenter)
-        // console.log(elem+randomPlace, element)
+//        //find coordinates of random Div
+//         var offsets = document.querySelector(elem + randomPlace).getBoundingClientRect();
+//         var top = offsets.top;
+//         var left = offsets.left;
+//         var topCenter = top + 5;
+//         var leftCenter = left + 12;
+//         let element = document.elementFromPoint(leftCenter, topCenter)
+//         // console.log(elem+randomPlace, element)
     
-       //find top element at that location
-       if (element === null) {
-           raccoonPlay();
-       } else {
-        let classArr = element.classList;
+//        //find top element at that location
+//        if (element === null) {
+//            raccoonPlay();
+//        } else {
+//         let classArr = element.classList;
        
-       //variable for element using classes from class list
-        let foundElem = document.querySelectorAll(`.${classArr[0]}`);
+//        //variable for element using classes from class list
+//         let foundElem = document.querySelectorAll(`.${classArr[0]}`);
     
-        if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
-            for (let i = 0; i <= 1; i++) {
-                foundElem[i].style.opacity = 0;
-                foundElem[i].classList.add("dogHit");
-            }
-            hdHitArr.push(foundElem[0]);
-            console.log(hdHitArr);
-            divHitArr.unshift(classArr[0]);
-            // console.log(divHitArr);
-            setTimeout(winConditions, 800);
-            // document.querySelector(".infoBox").innerHTML = `You got got!`;
-            setTimeout(dogTurn, 1200);
-            setTimeout(lemonThrow, 1200)
-            } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
-                raccoonGuess();
-            } else {
-                foundElem[0].style.backgroundColor = "grey";
-                foundElem[0].classList.add("miss");
-                // document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
-                setTimeout(dogTurn, 1200);
-                setTimeout(lemonThrow, 1200)
-            }
-    }
-}
+//         if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
+//             for (let i = 0; i <= 1; i++) {
+//                 foundElem[i].style.opacity = 0;
+//                 foundElem[i].classList.add("dogHit");
+//             }
+//             hdHitArr.push(foundElem[0]);
+//             console.log(hdHitArr);
+//             divHitArr.unshift(classArr[0]);
+//             // console.log(divHitArr);
+//             setTimeout(winConditions, 800);
+//             // document.querySelector(".infoBox").innerHTML = `You got got!`;
+//             setTimeout(dogTurn, 1200);
+//             setTimeout(lemonThrow, 1200)
+//             } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
+//                 raccoonGuess();
+//             } else {
+//                 foundElem[0].style.backgroundColor = "grey";
+//                 foundElem[0].classList.add("miss");
+//                 // document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
+//                 setTimeout(dogTurn, 1200);
+//                 setTimeout(lemonThrow, 1200)
+//             }
+//     }
+// }
 
-function topDogHit(elem) {
-    let children = document.querySelector(elem).children;
-    for (let i = 0; i < children.length; i++) {
+// function topDogHit(elem) {
+//     let children = document.querySelector(elem).children;
+//     for (let i = 0; i < children.length; i++) {
 
-    var offsets = children[i].getBoundingClientRect();
-    var top = offsets.top;
-    var left = offsets.left;
-    var topCenter = top + 5;
-    var leftCenter = left + 12;
-    let topElement = document.elementFromPoint(leftCenter, topCenter)
-    // console.log(children[i], topElement)
+//     var offsets = children[i].getBoundingClientRect();
+//     var top = offsets.top;
+//     var left = offsets.left;
+//     var topCenter = top + 5;
+//     var leftCenter = left + 12;
+//     let topElement = document.elementFromPoint(leftCenter, topCenter)
+//     // console.log(children[i], topElement)
 
-   //find top element at that location
-   if (topElement === null) {
-       dogHit(elem)
-   } else {
-    let classArr = topElement.classList; 
-    if (classArr.contains("dogHit") === true) {
-        return true
-    } 
-    }
-   }
-}
+//    //find top element at that location
+//    if (topElement === null) {
+//        dogHit(elem)
+//    } else {
+//     let classArr = topElement.classList; 
+//     if (classArr.contains("dogHit") === true) {
+//         return true
+//     } 
+//     }
+//    }
+// }
 
 
-function dogHit(elem) {
+// // function dogHit(elem) {
     
-    let children = document.querySelector(elem).children;
-    for (let i = 0; i < children.length; i++) {
+//     let children = document.querySelector(elem).children;
+//     for (let i = 0; i < children.length; i++) {
 
-    if (children[i].classList.contains("dogHit")) {
-            return true
-        } else {return false}
-
-
+//     if (children[i].classList.contains("dogHit")) {
+//             return true
+//         } else {return false}
 
 
-    }
-}
+
+
+//     }
+// }
 
 // function honeIn(elem) {
 //     let newElem = elem.split()
@@ -401,13 +407,12 @@ function dogHit(elem) {
 // END THIRDED GUESS
  
 
-//new try raccoon guess
-
-
-
+//REAL raccoon guess
 function raccoonGuess() {
     if (game !== 0) {
+        score();
     guessed = false;
+    document.querySelector(".scoreBox").style.display = 'block';
     document.querySelector(".infoBox").style.display = 'none';
 
     let randomPlace = Math.floor(Math.random() * 252);
@@ -451,62 +456,16 @@ function raccoonGuess() {
             setTimeout(lemonThrow, 1200)
         }
 }}}
+//RACCOON GUESS END!!
 
-//END NEW TRY
-
-// //REAL raccoon guess
-// function raccoonGuess() {
-//     if (game !== 0) {
-//     guessed = false;
-//     document.querySelector(".infoBox").style.display = 'none';
-
-//     let randomPlace = Math.floor(Math.random() * 252);
-   
-//    //find coordinates of random Div
-//     var offsets = document.querySelector(`.grillDiv.sq${randomPlace}`).getBoundingClientRect();
-//     var top = offsets.top;
-//     var left = offsets.left;
-//     var topCenter = top + 5;
-//     var leftCenter = left + 12;
-//     let element = document.elementFromPoint(leftCenter, topCenter)
-//     // console.log(top, left, topCenter, leftCenter, offsets, element)
-
-//    //find top element at that location
-//    if (element === null) {
-//        raccoonGuess();
-//    } else {
-//     let classArr = element.classList;
-   
-//    //variable for element using classes from class list
-//     let foundElem = document.querySelectorAll(`.${classArr[0]}`);
-
-//     if (classArr.contains("dog") && !(classArr.contains("dogHit"))) {
-//         for (let i = 0; i <= 1; i++) {
-//             foundElem[i].style.opacity = 0;
-//             foundElem[i].classList.add("dogHit");
-//         }
-//         hdHitArr.push(foundElem[0]);
-//         console.log(hdHitArr);
-//         setTimeout(winConditions, 800);
-//         // document.querySelector(".infoBox").innerHTML = `You got got!`;
-//         setTimeout(dogTurn, 1200);
-//         setTimeout(lemonThrow, 1200)
-//         } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
-//             raccoonGuess();
-//         } else {
-//             foundElem[0].style.backgroundColor = "grey";
-//             foundElem[0].classList.add("miss");
-//             // document.querySelector(".infoBox").innerHTML = `A snatch and miss.`;
-//             setTimeout(dogTurn, 1200);
-//             setTimeout(lemonThrow, 1200)
-//         }
-// }}}
-// //RACCOON GUESS END!!
 
 //Lemon Throw (User's Turn)
 function lemonThrow() {
     if (game !== 0) {
+        score();
+    document.querySelector(".scoreBox").style.display = 'block';
     document.querySelector(".infoBox").style.display = 'none';
+
     document.querySelector(".yardContainer").addEventListener('click', (event) => {
         //if to prevent clicks on random stuff
  if ((game !== 0) && (guessed === false) && !(event.target.classList.contains("miss")) && !(event.target.classList.contains("raccHit")) && !(event.target.classList.contains("yardBoundBox")) && !(event.target.classList.contains("raccoon1")) && !(event.target.classList.contains("raccoon2")) && !(event.target.classList.contains("raccoon3"))) {
@@ -517,7 +476,7 @@ function lemonThrow() {
             event.target.classList.add("miss");
             event.target.style.backgroundColor = "greenyellow";
             event.target.style.opacity = 1;
-            document.querySelector(".infoBox").innerHTML = `No dice. I think I hear something shuffling around the grill...`;
+            // document.querySelector(".infoBox").innerHTML = `No dice. I think I hear something shuffling around the grill...`;
             setTimeout(racTurn, 1000);
             setTimeout(raccoonGuess, 2000)
             setTimeout(raccoonGuess, 2000)
@@ -529,7 +488,7 @@ function lemonThrow() {
             event.target.classList.add("raccHit");
             raccHitArr.push(event.target);
             console.log(raccHitArr);
-            document.querySelector(".infoBox").innerHTML = `Got 'em! Now they're gonna be mad...`;
+            // document.querySelector(".infoBox").innerHTML = `Got 'em! Now they're gonna be mad...`;
             setTimeout(winConditions, 800);
             setTimeout(racTurn, 1000);
             setTimeout(raccoonGuess, 2000)
@@ -552,6 +511,11 @@ document.querySelector(".yardContainer").addEventListener('click', (event) => {
     clickTest(event.target)
 })
 
+function score() {
+    document.querySelector("h1").style.marginBottom = "10px";
+    document.querySelector(".score").innerHTML = `<p>SCORE: ${raccHitArr.length} to  ${hdHitArr.length}<p>`;
+}
+
 // start alert
 function startAlert() {
     if ((countdown === 3) && (game !== 0)) {
@@ -559,10 +523,11 @@ function startAlert() {
         document.querySelector(".infoBox").style.marginBottom = "40px";
         document.querySelector("h1").style.marginBottom = "25px";
         document.querySelector(".infoBox").style.borderRadius = '50%';
-        document.querySelector(".infoBox").innerHTML = `<p class="info">those raccoons are hiding out here somewhere... toss a lemon into the backyard and see if you can hit one<p>`;
+        document.querySelector(".infoBox").innerHTML = `<p class="info">Those raccoons are hiding out here somewhere...<p>`;
         gameStarted = true;
-        setTimeout(dogTurn, 4000);
-        setTimeout(lemonThrow, 4000)
+        setTimeout(score, 2000);
+        setTimeout(dogTurn, 2000);
+        setTimeout(lemonThrow, 2000)
     }
 }
 
@@ -572,6 +537,8 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 })
 
 //Win Conditions
+
+
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
 if (raccHitArr.length === 14) {
