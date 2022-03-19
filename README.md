@@ -23,7 +23,7 @@ To start, click a hotdog in the banner and place it on the grill. After all thre
 
 You can toss a lemon into the backyard (our version of firing into enemy waters) and the square will go red if you've hit a furry friend. 
 
-The raccoons then volley back, grabbing at your grill to snatch a bite of a hotdog. If they successfully chomp, the hit zone will disappear from the grill board.
+The raccoons then volley back, grabbing at your grill to snatch a bite of a hotdog. There are 3 of them, so they get three guesses on the board per turn. This also ups the stakes and makes the game harder! If they successfully chomp, the hit zone will disappear from the grill board.
 
 Each player has three "pieces" that each contain nine hit zones. A winner is announced after you or your opponent hits (or eats!) more than 14 points, or over half the opponents pieces.
 
@@ -38,6 +38,8 @@ A crucial tool needed to complete this project was ".getBoundingClientRect( )". 
 This tool was also helpful for the raccoon hiding function - randomly assigning locations to raccoons sometimes created overlaps which interfered with the game. Understanding where the raccoons were located and creating a conditional to keep them separate streamlined and simplified game functionality.
 
 Another helpful process was keeping some empty buttons in the DOM so I could assign functions for testing outside of the normal turn taking structure. This allowed me to hone the raccoon guessing and hiding functions as well as test out some other elements of the game before firing them within the program order. 
+
+I couldn't for the life of me figure out how to create an AI that would "hone in" on the hotdogs. You'll see a lot of code commented out of me trying to do this. This is an ongoing process and my goal is to eventually have a more intelligent guessing system, but for now, the triple guess raccoons will have to do. 
 
 ## Sign Off
 
