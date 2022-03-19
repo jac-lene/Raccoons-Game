@@ -410,7 +410,7 @@ function dogTurn() {
 //REAL raccoon guess
 function raccoonGuess() {
     if (game !== 0) {
-        score();
+        
     guessed = false;
     document.querySelector(".scoreBox").style.display = 'block';
     document.querySelector(".infoBox").style.display = 'none';
@@ -446,6 +446,7 @@ function raccoonGuess() {
         // document.querySelector(".infoBox").innerHTML = `You got got!`;
         setTimeout(dogTurn, 1200);
         setTimeout(lemonThrow, 1200)
+        score();
         } else if (classArr.contains("miss") || classArr.contains("dogHit")) {
             raccoonGuess();
         } else {
@@ -462,7 +463,7 @@ function raccoonGuess() {
 //Lemon Throw (User's Turn)
 function lemonThrow() {
     if (game !== 0) {
-        score();
+        
     document.querySelector(".scoreBox").style.display = 'block';
     document.querySelector(".infoBox").style.display = 'none';
 
@@ -488,6 +489,7 @@ function lemonThrow() {
             event.target.classList.add("raccHit");
             raccHitArr.push(event.target);
             console.log(raccHitArr);
+            score();
             // document.querySelector(".infoBox").innerHTML = `Got 'em! Now they're gonna be mad...`;
             setTimeout(winConditions, 800);
             setTimeout(racTurn, 1000);
@@ -541,10 +543,10 @@ document.querySelector(".reset").addEventListener('click', (event) => {
 
 function winConditions() {
     console.log(raccHitArr.length, hdHitArr.length)
-if (raccHitArr.length === 14) {
+if (raccHitArr.length >= 14) {
     game = 0;
     document.querySelector(".winner").style.display = "block";
-} else if (hdHitArr.length === 14) {
+} else if (hdHitArr.length >= 14) {
     game = 0;
     document.querySelector(".loser").style.display = "block";
 }
